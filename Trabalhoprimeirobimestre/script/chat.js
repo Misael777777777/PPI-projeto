@@ -1,35 +1,107 @@
-const usuario = localStorage.getItem("usuarioLogado");
+const usuario =
+  localStorage.getItem("usuarioLogado");
 
-document.getElementById("nomeUsuario").textContent =
-  usuario;
+if (!usuario) {
 
-const mensagens =
+  window.location.href = "index.html";
+
+}
+
+document.getElementById("nomeUsuario").innerText =
+  "Usuário: " + usuario;
+
+const areaMensagens =
   document.getElementById("mensagens");
 
-document
-  .getElementById("btnEnviar")
-  .addEventListener("click", () => {
+const botaoEnviar =
+  document.getElementById("btnEnviar");
 
-    const input =
-      document.getElementById("inputMensagem");
+const inputMensagem =
+  document.getElementById("inputMensagem");
 
-    if (input.value.trim() === "") return;
+function carregarMensagens() {
 
-    const div = document.createElement("div");
+  const mensagensSalvas =
+    JSON.parse(localStorage.getItem("mensagens")) || [];
 
-    div.innerHTML =
-      `<strong>${usuario}:</strong> ${input.value}`;
+  areaMensagens.innerHTML = "";
 
-    mensagens.appendChild(div);
+  mensagensSalvas.forEach(msg => {
 
-    input.value = "";
+    const novaMensagem =
+      document.createElement("div");
+
+    novaMensagem.classList.add("mensagem");
+
+    novaMensagem.innerHTML =
+      "<strong>" +
+      msg.usuario +
+      ":</strong> " +
+      msg.texto;
+
+    areaMensagens.appendChild(novaMensagem);
+
   });
 
-document
-  .getElementById("logout")
-  .addEventListener("click", () => {
+}
+
+function enviarMensagem() {
+
+  const texto =
+    inputMensagem.value.trim();
+
+  if (texto === "") {
+
+    return;
+
+  }
+
+  const mensagensSalvas =
+    JSON.parse(localStorage.getItem("mensagens")) || [];
+
+  mensagensSalvas.push({
+
+    usuario: usuario,
+    texto: texto
+
+  });
+
+  localStorage.setItem(
+    "mensagens",
+    JSON.stringify(mensagensSalvas)
+  );
+
+  inputMensagem.value = "";
+
+  carregarMensagens();
+
+}
+
+botaoEnviar.addEventListener(
+  "click",
+  enviarMensagem
+);
+
+inputMensagem.addEventListener(
+  "keypress",
+  function(event) {
+
+    if (event.key === "Enter") {
+
+      enviarMensagem();
+
+    }
+
+  }
+);
+
+document.getElementById("logout")
+  .addEventListener("click", function() {
 
     localStorage.removeItem("usuarioLogado");
 
     window.location.href = "index.html";
+
   });
+
+carregarMensagens();
