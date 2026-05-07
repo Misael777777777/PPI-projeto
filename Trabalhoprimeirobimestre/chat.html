@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+
+  <link rel="stylesheet" href="">
+</head>
+<body>
+
+  <header>
+
+    <div class="logo-container">
+      <img src="fotos/logo.png" alt="Logo">
+      <h1>IFRN Chat</h1>
+    </div>
+
+    <button id="logout">
+      <img src="fotos/sair.png" alt="Sair">
+      Sair
+    </button>
+
+  </header>
+
+  <main>
+
+    <section class="chat-box">
+
+      <div class="top-chat">
+
+        <div>
+          <h2 id="chatTitulo">Chat Geral</h2>
+          <p id="nomeUsuario"></p>
+        </div>
+
+        <div class="chat-buttons">
+          <button id="btnGeral">Geral</button>
+          <button id="btnJogos">Jogos</button>
+        </div>
+
+      </div>
+
+      <div id="mensagens"></div>
+
+      <div class="send-area">
+
+        <input
+          type="text"
+          id="inputMensagem"
+          placeholder="Digite sua mensagem..."
+        >
+
+        <button id="btnEnviar">
+          Enviar
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <img src="fotos/logo.jpg" alt="IFRN">
+
+    <p>IFRN Campus Santa Cruz</p>
+
+    <p>Trabalho de Programação para Internet</p>
+
+    <p>Prof. Marcelo Figueiredo Barbosa Júnior</p>
+
+  </footer>
+
+  <script src="chat.js"></script>
+
+</body>
+</html>
