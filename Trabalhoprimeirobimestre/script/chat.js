@@ -1,12 +1,6 @@
 const usuario =
   localStorage.getItem("usuarioLogado");
 
-if (!usuario) {
-
-  window.location.href = "login.html";
-
-}
-
 document.getElementById("nomeUsuario").innerText =
   "Usuário: " + usuario;
 
@@ -31,8 +25,6 @@ function carregarMensagens() {
     const novaMensagem =
       document.createElement("div");
 
-    novaMensagem.classList.add("mensagem");
-
     novaMensagem.innerHTML =
       "<strong>" +
       msg.usuario +
@@ -50,11 +42,7 @@ function enviarMensagem() {
   const texto =
     inputMensagem.value.trim();
 
-  if (texto === "") {
-
-    return;
-
-  }
+  if (texto === "") return;
 
   const mensagensSalvas =
     JSON.parse(localStorage.getItem("mensagens")) || [];
@@ -80,19 +68,6 @@ function enviarMensagem() {
 botaoEnviar.addEventListener(
   "click",
   enviarMensagem
-);
-
-inputMensagem.addEventListener(
-  "keypress",
-  function(event) {
-
-    if (event.key === "Enter") {
-
-      enviarMensagem();
-
-    }
-
-  }
 );
 
 carregarMensagens();
