@@ -38,10 +38,10 @@ btnEntrar.addEventListener(
   function() {
 
     const usuario =
-      document.getElementById("usuario").value;
+  document.getElementById("usuario").value.trim();
 
     const senha =
-      document.getElementById("senha").value;
+  document.getElementById("senha").value.trim();
 
     const usuarioValido =
       usuarios.find(function(u) {
