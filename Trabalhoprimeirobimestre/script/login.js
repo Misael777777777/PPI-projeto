@@ -1,104 +1,49 @@
-const usuario = localStorage.getItem("usuarioLogado");
+const usuarios = [
+  { usuario: "mimmarcelo", senha: "Teste123" },
+  { usuario: "lucas", senha: "123" },
+  { usuario: "ryan", senha: "123" },
+  { usuario: "andrei", senha: "123" },
+  { usuario: "neurivan", senha: "123" }
+];
 
-if (!usuario) {
-  window.location.href = "index.html";
-}
+document
+  .getElementById("btnEntrar")
+  .addEventListener("click", function() {
 
-document.getElementById("nomeUsuario").textContent =
-  `Usuário: ${usuario}`;
+    const usuario =
+      document.getElementById("usuario").value;
 
-if (!localStorage.getItem("mensagens")) {
+    const senha =
+      document.getElementById("senha").value;
 
-  const mensagensIniciais = [
-    {
-      usuario: "Sistema",
-      texto: "Bem-vindo ao chat!"
+    const usuarioValido =
+      usuarios.find(u =>
+        u.usuario === usuario &&
+        u.senha === senha
+      );
+
+    if (usuarioValido) {
+
+      localStorage.setItem(
+        "usuarioLogado",
+        usuario
+      );
+
+      window.location.href = "chat.html";
+
+    } else {
+
+      alert("Usuário ou senha inválidos!");
+
     }
-  ];
 
-  localStorage.setItem(
-    "mensagens",
-    JSON.stringify(mensagensIniciais)
-  );
-}
-
-function carregarMensagens() {
-
-  const mensagens = JSON.parse(
-    localStorage.getItem("mensagens")
-  );
-
-  const areaMensagens =
-    document.getElementById("mensagens");
-
-  areaMensagens.innerHTML = "";
-
-  mensagens.forEach(msg => {
-
-    const div = document.createElement("div");
-
-    div.classList.add("mensagem");
-
-    div.innerHTML = `
-      <strong>${msg.usuario}:</strong>
-      ${msg.texto}
-    `;
-
-    areaMensagens.appendChild(div);
-  });
-
-  areaMensagens.scrollTop =
-    areaMensagens.scrollHeight;
-}
-
-function enviarMensagem() {
-
-  const input =
-    document.getElementById("inputMensagem");
-
-  const texto = input.value.trim();
-
-  if (texto === "") return;
-
-  const mensagens = JSON.parse(
-    localStorage.getItem("mensagens")
-  );
-
-  mensagens.push({
-    usuario: usuario,
-    texto: texto
-  });
-
-  localStorage.setItem(
-    "mensagens",
-    JSON.stringify(mensagens)
-  );
-
-  input.value = "";
-
-  carregarMensagens();
-}
-
-document
-  .getElementById("btnEnviar")
-  .addEventListener("click", enviarMensagem);
-
-document
-  .getElementById("inputMensagem")
-  .addEventListener("keypress", function(e) {
-
-    if (e.key === "Enter") {
-      enviarMensagem();
-    }
   });
 
 document
-  .getElementById("logout")
-  .addEventListener("click", () => {
+  .getElementById("btnDev")
+  .addEventListener("click", function() {
 
-    localStorage.removeItem("usuarioLogado");
+    window.location.href =
+      "desenvolvedores.html";
 
-    window.location.href = "index.html";
   });
-
-carregarMensagens();
