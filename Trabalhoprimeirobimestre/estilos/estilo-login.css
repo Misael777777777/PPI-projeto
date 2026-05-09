@@ -1,9 +1,9 @@
 body{
     font-family: Arial;
-    background-color: beige;
+    background-color: rgb(217, 217, 215);
 }
 header{
-    background-color: rgb(211, 210, 210);
+    background-color: rgb(201, 201, 201);
     color: white;
     text-align: center;
     padding: 20px;
@@ -30,7 +30,7 @@ button{
     border-radius: 5px;
 }
 footer{
-    background-color: rgb(211, 210, 210);
+    background-color: rgb(201, 201, 201);
     color: white;
     text-align: center;
     padding: 15px;
