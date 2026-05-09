@@ -5,65 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <title>Chat de conversas</title>
-     
+     <link rel="stylesheet" href="estilos/estilo-login.css">
     <meta charset="UTF-8"> </meta>
 </head>
 <body>
     
-<center>
-    <h1>Chat</h1>
-    <hr>
-</center>
+    <header>
+        <div style="display: flex; align-items: center;">
+            
+            <img src="fotos/logo.png" 
+                 alt="Logo"
+                 style="margin-right: 15px; max-width: 300px;" >
+    
+            
+    
+        </div>
+    </header>
 
-<h2>Login</h2>
 <section id="login">
+    <h2>Login</h2>
 <label >Usuário</label><br>
-<input type="text"><br>
+<input type="text" id="usuario"><br>
 
 <label>Senha:</label><br>
-<input type="password"><br>
+<input type="password" id="senha"><br>
 <br>
 
 <button>Entrar</button>
 <br><Br></Br>
 </section>
 
-<section id="menu">
-    <button>Chat</button>
-    <button>Desenvolvedores</button>
-    <button>sair</button>
+ <section id="menu"> 
+     <!-- <button>Chat</button><br><br>  -->
+    <button>Desenvolvedores</button><br><br>
+    <!-- <button>sair</button> -->
 </section>
 
-<section id="chat">
-    <h2>Área de Chat</h2>
-    <select name="opinachat" id="opcaochat">
-        <option value="geral">chat geral</option>
-        <option value="estudos">Chat estudos</option>
-    </select>
- <div>
-    <p>Mensagem 1</p>
+
+   <!-- <p>Chat</p> -->
  </div> 
- <input type="text" placeholder="Digite sua mensagem.">
- <br><button>Enviar</button>
-</section>
+ <!-- <input type="text" placeholder="Digite sua mensagem."> -->
+ <!-- <br><button>Enviar</button> -->
+<!-- 
+</section> -->
 
-<section id="dev">
-    <h2>Desenvolvedores</h2>
-    <p>Ryan Joseph Souza da Silva</p>
-    <p>Lucas Misael dos Santos Crispim</p>
-    <p>Neurivan Rodrigues Coelho Neto</p>
 
-</section>
 <footer>
 
-    <br><img src="fotos/logo.png" width="100">
+    <br>
     <p>IFRN Campus Santa Cruz</p>
     <p>Trabalho de Programação para Internet</p>
     <p>Prof. Marcelo Figueiredo Barbosa Júnior</p>
 
     
 </footer>
-
-<script src="script/login.js"></script>
+    
+    <script src="script/login.js"></script>
 </body>
 </html>
