@@ -3,7 +3,7 @@ const usuario =
 
 if (!usuario) {
 
-  window.location.href = "index.html";
+  window.location.href = "login.html";
 
 }
 
@@ -26,7 +26,7 @@ function carregarMensagens() {
 
   areaMensagens.innerHTML = "";
 
-  mensagensSalvas.forEach(msg => {
+  mensagensSalvas.forEach(function(msg) {
 
     const novaMensagem =
       document.createElement("div");
@@ -94,14 +94,5 @@ inputMensagem.addEventListener(
 
   }
 );
-
-document.getElementById("logout")
-  .addEventListener("click", function() {
-
-    localStorage.removeItem("usuarioLogado");
-
-    window.location.href = "index.html";
-
-  });
 
 carregarMensagens();
