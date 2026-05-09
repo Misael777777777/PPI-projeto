@@ -3,6 +3,26 @@ const usuarios = [
   {
     usuario: "mimmarcelo",
     senha: "Teste123"
+  },
+
+  {
+    usuario: "lucas",
+    senha: "123"
+  },
+
+  {
+    usuario: "ryan",
+    senha: "123"
+  },
+
+  {
+    usuario: "andrei",
+    senha: "123"
+  },
+
+  {
+    usuario: "neurivan",
+    senha: "123"
   }
 
 ];
@@ -12,23 +32,32 @@ document
   .addEventListener("click", function() {
 
     const usuario =
-      document.getElementById("usuario").value.trim();
+      document
+        .getElementById("usuario")
+        .value
+        .trim();
 
     const senha =
-      document.getElementById("senha").value.trim();
+      document
+        .getElementById("senha")
+        .value
+        .trim();
 
-    if (
-      usuario === "mimmarcelo" &&
-      senha === "Teste123"
-    ) {
+    const usuarioValido =
+      usuarios.find(function(u) {
+
+        return (
+          u.usuario === usuario &&
+          u.senha === senha
+        );
+
+      });
+
+    if (usuarioValido) {
 
       localStorage.setItem(
         "usuarioLogado",
         usuario
-      );
-
-      alert(
-        localStorage.getItem("usuarioLogado")
       );
 
       window.location.href =
@@ -36,8 +65,19 @@ document
 
     } else {
 
-      alert("Login inválido");
+      alert(
+        "Usuário ou senha inválidos!"
+      );
 
     }
+
+  });
+
+document
+  .getElementById("btnDev")
+  .addEventListener("click", function() {
+
+    window.location.href =
+      "desenvolvedores.html";
 
   });
